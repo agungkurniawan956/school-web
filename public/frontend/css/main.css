@@ -1,0 +1,52 @@
+.section-banner .carousel-inner .carousel-item {
+  background-size: cover;
+  min-height: 599px;
+}
+
+.berita-pesantren {
+  background-color: #e2e4f7;
+}
+.berita-pesantren .card-berita-image {
+  background-size: cover;
+  background-color: rgb(230, 230, 230);
+  min-height: 187px;
+}
+
+.agenda-pesantren {
+  background-color: #e2e4f7;
+}
+.agenda-pesantren .card-img-agenda {
+  background-size: cover;
+  background-color: rgb(230, 230, 230);
+  min-height: 187px;
+}
+
+.section-galeri-popular .section-galeri-content .card-galeri {
+  min-height: 229px;
+  background-color: rgb(253, 0, 0);
+  background-size: cover;
+  margin-bottom: 19px;
+  border-radius: 11px;
+}
+
+.section-footer a {
+  color: rgb(233, 233, 233);
+  text-decoration: none;
+}
+.section-footer a :hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.footer-link {
+  color: white;
+}
+.footer-link :hover {
+  color: blue;
+}
+
+.konten-berita .thumb-post {
+  background-size: cover;
+  background-color: #8f8f8f;
+  min-height: 399px;
+}/*# sourceMappingURL=main.css.map */
