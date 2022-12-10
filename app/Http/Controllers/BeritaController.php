@@ -10,8 +10,8 @@ class BeritaController extends Controller
     public function index()
     {
         return view('berita', [
-            "title" => "Berita",
-            "posts" => Berita::latest()->get()
+            "title" => "Berita Pesantren",
+            "beritas" => Berita::with(['user', 'category'])->latest()->get()
         ]);
     }
 

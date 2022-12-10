@@ -20,19 +20,19 @@
     <div class="berita-pesantren pb-1">
       <div class="container">
         <div class="row mb-3 pt-3 justify-content-center">
-          <h2 class="text-center fw-bold">Berita Pesantren</h2>
+          <h2 class="text-center fw-bold">{{$title}}</h2>
           <hr class="border border-primary opacity-100 border-2" style="width: 100px; color:black;">
         </div>
     
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 pb-3">
-          @foreach ($posts as $post)
+          @foreach ($beritas as $berita)
             <div class="col">
               <div class="card h-100 shadow-md bg-light shadow-md">
-                <div class="card-berita-image card-img-top shadow-sm" style="background-image: url('{{$post["img"]}}');"></div>
+                <div class="card-berita-image card-img-top shadow-sm" style="background-image: url('{{$berita["img"]}}');"></div>
                 <div class="card-body">
-                  <h5 class="card-berita-title card-title">{{ $post->title }}</h5>
-                  <p class="card-berita-caption card-text">{{ $post->excerpt }}</p>
-                  <a href="/blogberita/{{ $post->slug }}" class="btn btn-primary">Read more.. </a>
+                  <h5 class="card-berita-title card-title">{{ $berita->title }}</h5>
+                  <p class="card-berita-caption card-text">{{ $berita->excerpt }}</p>
+                  <a href="/blogberita/{{ $berita->slug }}" class="btn btn-primary">Read more.. </a>
                 </div>
               </div>
             </div>

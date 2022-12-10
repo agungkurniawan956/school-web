@@ -35,8 +35,8 @@ Route::get('/blogberita/{berita:slug}', [BeritaController::class, 'show']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('berita', [
-        'title' => $category->name,
-        'beritas' => $category->beritas,
+        'title' => "Berita #$category->name",
+        'beritas' => $category->beritas->load('category', 'user'),
         'category' => $category->name,
     ]);
 });
