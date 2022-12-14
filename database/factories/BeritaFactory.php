@@ -17,7 +17,9 @@ class BeritaFactory extends Factory
             'title' => $this->faker->sentence(mt_rand(3, 6)),
             'slug' => $this->faker->slug(),
             'excerpt' => $this->faker->paragraph(2),
-            'body' => $this->faker->paragraphs(5, true),
+            'body' => collect($this->faker->paragraphs(mt_rand(5, 9)))
+                ->map(fn ($p) => "<p>$p</p>")
+                ->implode(''),
             'user_id' => mt_rand(1, 3),
             'category_id' => mt_rand(1, 2)
         ];

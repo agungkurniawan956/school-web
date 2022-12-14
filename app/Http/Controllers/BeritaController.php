@@ -11,7 +11,7 @@ class BeritaController extends Controller
     {
         return view('berita', [
             "title" => "Berita Pesantren",
-            "beritas" => Berita::with(['user', 'category'])->latest()->get()
+            "beritas" => Berita::latest()->Filter(request(['search']))->get()
         ]);
     }
 

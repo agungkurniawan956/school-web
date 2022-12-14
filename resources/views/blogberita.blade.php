@@ -25,7 +25,7 @@
         <div class="col-lg-8 col-sm-12">
           <div class="comtainer">
             <div class="card text-bg-dark">
-              <img src="{{$post->img}}" class="card-img" alt="...">
+              <img src="https://source.unsplash.com/1199x299/{{$post->category->name}}" class="card-img img-fluid" alt="{{$post->title}}">
             </div>
             <div class="body-konten mt-3">
               <h2 class="title-body">{{$post->title}}</h2>

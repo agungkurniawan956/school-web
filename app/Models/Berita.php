@@ -10,6 +10,16 @@ class Berita extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['user', 'category'];
+
+    public function scopeFilter($query, array $filters)
+    {
+        if (isset($filters['search']) ? $filters['search'] : false) {
+            $query->where('title', 'like', '%' . $filters['search'] . '%')
+                ->orWhere('body', 'like', '%' . $filters['search'] . '%');
+        }
+    }
+
 
     public function category()
     {
