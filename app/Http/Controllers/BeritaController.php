@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Berita;
+use App\Models\Category;
 
 class BeritaController extends Controller
 {
     public function index()
     {
+        $title = '';
+        if (request('category')) {
+            $category = Category::firstWhere('slug', request('category'));
+            $title = ' #' . $category->name;
+        }
+
         return view('berita', [
-            "title" => "Berita Pesantren",
-            "beritas" => Berita::latest()->Filter(request(['search']))->get()
+            "title" => "Berita Pesantren" . $title,
+            "beritas" => Berita::latest()->Filter(request(['search', 'category']))->paginate(6)->withQueryString()
         ]);
     }
 

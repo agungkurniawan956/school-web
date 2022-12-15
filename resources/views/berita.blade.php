@@ -8,7 +8,10 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a style="text-decoration: none;" href="#">Informasi</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Berita</li>
+              <li class="breadcrumb-item"><a style="text-decoration: none;" href="/berita">Berita</a></li>
+              @if (request('category'))
+                <li class="breadcrumb-item active" aria-current="page">#{{request('category')}}</li>
+              @endif
             </ol>
         </div>
         </nav>
@@ -26,6 +29,9 @@
           </div>
           <div class="col-md-4">
             <form action="/berita">
+              @if (request('category'))
+                  <input type="hidden" name="category" value="{{request('category')}}">
+              @endif
               <div class="input-group mb-3">
                 <input type="text" class="form-control border-primary" placeholder="Telusuri Berita Terkini" name="search" value="{{request('search')}}">
                 <button class="btn btn-primary" type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -77,22 +83,12 @@
               </div>
           @endif
         </div>
-  
-        {{-- <nav aria-label="...">
-          <ul class="pagination py-4 justify-content-center">
-            <li class="page-item disabled">
-              <span class="page-link">Previous</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item active" aria-current="page">
-              <span class="page-link">2</span>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav> --}}
+
+        {{-- pagination --}}
+        <div class="d-flex my-4 justify-content-center">
+          {{$beritas->links()}}
+        </div>
+
       </div>
     </div>
     <!-- end content -->

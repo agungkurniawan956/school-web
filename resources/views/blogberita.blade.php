@@ -31,7 +31,7 @@
               <h2 class="title-body">{{$post->title}}</h2>
               <p>
                 <span class="badge rounded-pill text-bg-secondary text-black bg-opacity-25 fw-normal"> <i class="fa-regular fa-user"></i> {{$post->user->name}}</span> 
-                <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/categories/{{$post->category->slug}}" class="text-decoration-none fw-normal">#{{$post->category->name}}</a></span> 
+                <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/berita?category={{$post->category->slug}}" class="text-decoration-none fw-normal">#{{$post->category->name}}</a></span> 
               </p>
               <div class="article-konten mb-5 mt-3">
                 {!! $post->body !!}
