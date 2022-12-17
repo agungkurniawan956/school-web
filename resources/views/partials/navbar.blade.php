@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse fw-bold" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Home") ? 'active' : '' }}" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{ ($active === "Home") ? 'active' : '' }}" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,7 +23,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle {{ ($title === "Berita") ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle {{ ($active === "Informasi") ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Informasi
           </a>
           <ul class="dropdown-menu">
@@ -32,7 +32,12 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ ($title === "Contact") ? 'active' : '' }}" href="/contact">Kontak</a>
+          <a class="nav-link {{ ($active === "Contact") ? 'active' : '' }}" href="/contact">Kontak</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="/login" class="btn btn-outline-primary ms-2 {{ ($active === "Login") ? 'active' : '' }}">Login</a>
         </li>
       </ul>
     </div>

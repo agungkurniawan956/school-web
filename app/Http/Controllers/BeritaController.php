@@ -18,6 +18,7 @@ class BeritaController extends Controller
 
         return view('berita', [
             "title" => "Berita Pesantren" . $title,
+            "active" => "Informasi",
             "beritas" => Berita::latest()->Filter(request(['search', 'category']))->paginate(6)->withQueryString()
         ]);
     }
@@ -26,6 +27,7 @@ class BeritaController extends Controller
     {
         return view('blogberita', [
             "title" => "Berita",
+            "active" => "Informasi",
             "post" => $berita
         ]);
     }

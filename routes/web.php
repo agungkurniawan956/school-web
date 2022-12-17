@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Berita;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -18,17 +20,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index', [
-        "title" => "Home"
+        "title" => "Home",
+        "active" => "Home"
     ]);
 });
+
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/contact', function () {
     return view('contact', [
-        "title" => "Contact"
+        "title" => "Contact",
+        "active" => "Contact"
     ]);
 });
 
-
+//halaman all post
 Route::get('/berita', [BeritaController::class, 'index']);
 // hlaman singel post
 Route::get('/blogberita/{berita:slug}', [BeritaController::class, 'show']);
