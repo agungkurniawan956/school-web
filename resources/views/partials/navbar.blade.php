@@ -36,9 +36,24 @@
         </li>
       </ul>
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="/login" class="btn btn-outline-primary ms-2 {{ ($active === "Login") ? 'active' : '' }}">Login</a>
-        </li>
+        @auth
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle {{ ($active === "Informasi") ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-user"></i> {{auth()->user()->name}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <form action="/logout" method="post">
+              @csrf
+              <button type="submit" class="dropdown-item">Logout</button>
+            </form>
+          </ul>
+        @else
+          <li class="nav-item">
+            <a href="/login" class="btn btn-outline-primary ms-2 {{ ($active === "Login") ? 'active' : '' }}">Login</a>
+          </li>
+        @endauth
       </ul>
     </div>
   </div>
