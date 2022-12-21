@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardBeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Models\Berita;
@@ -33,7 +33,6 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact', [
@@ -46,6 +45,15 @@ Route::get('/contact', function () {
 Route::get('/berita', [BeritaController::class, 'index']);
 // hlaman singel post
 Route::get('/blogberita/{berita:slug}', [BeritaController::class, 'show']);
+
+Route::get('/dashboard', function () {
+    return view('backend.index', [
+        "title" => "Dashboard",
+        "active" => "Dashboard"
+    ]);
+})->middleware('auth');
+
+Route::resource('/dashboard/berita', DashboardBeritaController::class)->middleware('auth');
 
 // Route::get('/categories/{category:slug}', function (Category $category) {
 //     return view('berita', [
