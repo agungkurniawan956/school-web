@@ -15,7 +15,7 @@ class DashboardBeritaController extends Controller
     public function index()
     {
         return view('backend.berita', [
-            'beritas' => Berita::all()
+            'beritas' => Berita::where('user_id', auth()->user()->id)->get()
         ]);
     }
 
@@ -48,7 +48,10 @@ class DashboardBeritaController extends Controller
      */
     public function show(Berita $berita)
     {
-        //
+        return $berita;
+        // return view('backend.blogberita', [
+        //     'berita' => $berita
+        // ]);
     }
 
     /**

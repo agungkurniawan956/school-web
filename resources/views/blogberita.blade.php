@@ -10,7 +10,7 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a style="text-decoration: none;" href="#">Informasi</a></li>
             <li class="breadcrumb-item"><a style="text-decoration: none;" href="/berita">Berita</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{$berita->title}}</li>
           </ol>
       </div>
       </nav>
@@ -25,16 +25,16 @@
         <div class="col-lg-8 col-sm-12">
           <div class="comtainer">
             <div class="card text-bg-dark">
-              <img src="https://source.unsplash.com/1199x299/{{$post->category->name}}" class="card-img img-fluid" alt="{{$post->title}}">
+              <img src="https://source.unsplash.com/1199x299/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
             </div>
             <div class="body-konten mt-3">
-              <h2 class="title-body">{{$post->title}}</h2>
+              <h2 class="title-body">{{$berita->title}}</h2>
               <p>
-                <span class="badge rounded-pill text-bg-secondary text-black bg-opacity-25 fw-normal"> <i class="fa-regular fa-user"></i> {{$post->user->name}}</span> 
-                <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/berita?category={{$post->category->slug}}" class="text-decoration-none fw-normal">#{{$post->category->name}}</a></span> 
+                <span class="badge rounded-pill text-bg-secondary text-black bg-opacity-25 fw-normal"> <i class="fa-regular fa-user"></i> {{$berita->user->name}}</span> 
+                <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/berita?category={{$berita->category->slug}}" class="text-decoration-none fw-normal">#{{$berita->category->name}}</a></span> 
               </p>
               <div class="article-konten mb-5 mt-3">
-                {!! $post->body !!}
+                {!! $berita->body !!}
               </div>
               <hr>
               <!-- <div class="share-post">

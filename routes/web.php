@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\DashboardBeritaController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Models\Berita;
 use App\Models\Category;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardBeritaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,11 +49,32 @@ Route::get('/blogberita/{berita:slug}', [BeritaController::class, 'show']);
 Route::get('/dashboard', function () {
     return view('backend.index', [
         "title" => "Dashboard",
-        "active" => "Dashboard"
     ]);
 })->middleware('auth');
 
 Route::resource('/dashboard/berita', DashboardBeritaController::class)->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Route::get('/categories/{category:slug}', function (Category $category) {
 //     return view('berita', [

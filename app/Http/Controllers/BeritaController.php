@@ -28,7 +28,7 @@ class BeritaController extends Controller
         return view('blogberita', [
             "title" => "Berita",
             "active" => "Informasi",
-            "post" => $berita
+            "berita" => $berita
         ]);
     }
 }
