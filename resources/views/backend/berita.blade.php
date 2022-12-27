@@ -29,9 +29,9 @@
             <td>{{ $berita->category->name }}</td>
             <td>{{ $berita->created_at->diffForHumans()}}</td>
             <td>
-              <a href="/dashboard/berita/{{ $berita->id }}" class="btn btn-info btn-sm m-1"><i class="fa-regular fa-eye"></i></a>
-              <a href="/dashboard/berita" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
-              <a href="/dashboard/berita" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-trash"></i></i></a>
+              <a href="/dashboard/beritas/{{ $berita->slug }}" class="btn btn-info btn-sm m-1"><i class="fa-regular fa-eye"></i></a>
+              <a href="" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-trash"></i></a>
             </td>
           </tr>
         @endforeach

@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index', [
         "title" => "Home",
-        "active" => "Home"
+        // "active" => "Home"
     ]);
 });
 
@@ -37,7 +37,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/contact', function () {
     return view('contact', [
         "title" => "Contact",
-        "active" => "Contact"
+        // "active" => "Contact"
     ]);
 });
 
@@ -52,7 +52,9 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
-Route::resource('/dashboard/berita', DashboardBeritaController::class)->middleware('auth');
+Route::resource('/dashboard/beritas', DashboardBeritaController::class)->middleware('auth');
+// Route::get('dashboard/berita/{berita:slug}', [DashboardBeritaController::class, 'show'])->middleware('auth');
+// Route::resource('/dashboard/berita/{id}', DashboardBeritaController::class)->middleware('auth');
 
 
 

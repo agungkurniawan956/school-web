@@ -48,10 +48,10 @@ class DashboardBeritaController extends Controller
      */
     public function show(Berita $berita)
     {
-        return $berita;
-        // return view('backend.blogberita', [
-        //     'berita' => $berita
-        // ]);
+        // return $berita;
+        return view('backend.blogberita', [
+            'berita' => $berita
+        ]);
     }
 
     /**
