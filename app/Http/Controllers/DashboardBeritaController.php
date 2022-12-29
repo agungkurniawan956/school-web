@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardBeritaController extends Controller
 {
@@ -26,7 +27,7 @@ class DashboardBeritaController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.createberita');
     }
 
     /**
@@ -86,5 +87,11 @@ class DashboardBeritaController extends Controller
     public function destroy(Berita $berita)
     {
         //
+    }
+
+    public function checkSlug(Request $request)
+    {
+        $slug = SlugService::createSlug(Berita::class, 'slug', $request->title);
+        return response()->json(['slug' => $slug]);
     }
 }

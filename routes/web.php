@@ -52,9 +52,8 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
+Route::get('/dashboard/beritas/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/beritas', DashboardBeritaController::class)->middleware('auth');
-// Route::get('dashboard/berita/{berita:slug}', [DashboardBeritaController::class, 'show'])->middleware('auth');
-// Route::resource('/dashboard/berita/{id}', DashboardBeritaController::class)->middleware('auth');
 
 
 
