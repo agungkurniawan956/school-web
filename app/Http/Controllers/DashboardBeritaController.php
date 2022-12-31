@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -27,7 +28,9 @@ class DashboardBeritaController extends Controller
      */
     public function create()
     {
-        return view('backend.createberita');
+        return view('backend.createberita', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -38,7 +41,12 @@ class DashboardBeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedata = $request->validate([
+            'title' => 'required|max:255',
+            'slug' => 'required|unique:beritas',
+            'category_id' => 'required',
+            'body' => 'required'
+        ]);
     }
 
     /**

@@ -8,8 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link rel="stylesheet" href="{{ url('/frontend/libraries/Bootstrap/css/bootstrap.min.css')}}">
     
-    <!-- Custom styles for this template -->
+    <!-- Custom styles dashboard -->
     <link href="/backend/css/dashboard.css" rel="stylesheet">
+
+    {{-- style trix editor --}}
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+    <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+
+    <style>
+      trix-toolbar [data-trix-button-group="file-tools"]{
+        display:none;
+      }
+    </style>
   </head>
   
   <body>
