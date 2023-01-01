@@ -12,6 +12,12 @@
 
   <div class="table-responsive">
     <a href="/dashboard/beritas/create" class="btn btn-primary btn-smal px-3 mb-3"><i class="fa-solid fa-plus"></i> Create</a>
+
+    @if (session()->has('success'))
+      <div class="alert alert-success" role="alert">
+        {{session('success')}}
+      </div>
+    @endif
     <table class="table table-striped table-sm">
       <thead>
         <tr>

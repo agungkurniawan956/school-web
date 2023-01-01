@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardBeritaController extends Controller
@@ -41,12 +42,19 @@ class DashboardBeritaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedata = $request->validate([
+        $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:beritas',
             'category_id' => 'required',
             'body' => 'required'
         ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+
+        Berita::create($validatedData);
+
+        return redirect('/dashboard/beritas')->with('success', 'Posting Berita Berhasil!!');
     }
 
     /**

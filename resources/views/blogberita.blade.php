@@ -24,15 +24,16 @@
       <div class="row">
         <div class="col-lg-8 col-sm-12">
           <div class="comtainer">
-            <div class="card text-bg-dark">
-              <img src="https://source.unsplash.com/1199x299/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
-            </div>
-            <div class="body-konten mt-3">
-              <h2 class="title-body">{{$berita->title}}</h2>
+            <h2 class="title-body">{{$berita->title}}</h2>
               <p>
                 <span class="badge rounded-pill text-bg-secondary text-black bg-opacity-25 fw-normal"> <i class="fa-regular fa-user"></i> {{$berita->user->name}}</span> 
                 <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/berita?category={{$berita->category->slug}}" class="text-decoration-none fw-normal">#{{$berita->category->name}}</a></span> 
               </p>
+            <div class="card text-bg-dark">
+              <img src="https://source.unsplash.com/1199x299/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
+            </div>
+            <div class="body-konten mt-3">
+              
               <div class="article-konten mb-5 mt-3">
                 {!! $berita->body !!}
               </div>
