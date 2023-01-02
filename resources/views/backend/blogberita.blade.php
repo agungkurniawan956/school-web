@@ -13,11 +13,16 @@
               <span class="badge rounded-pill text-bg-secondary bg-opacity-25 fw-normal"> <a href="/berita?category={{$berita->category->slug}}" class="text-decoration-none fw-normal">#{{$berita->category->name}}</a></span> 
             </p>
             <p class="text-muted"><small>{{$berita->created_at->diffForHumans()}}</small></p>
-            <p>
+            
               <a href="" class="btn btn-warning btn-sm rounded-pill px-3"><i class="fa-solid fa-pen"></i> Edit</a>
-              <a href="" class="btn btn-danger btn-sm rounded-pill px-3"><i class="fa-solid fa-trash"></i> Delete</a>
-            </p>
-            <div class="card text-bg-dark">
+              {{-- <a href="" class="btn btn-danger btn-sm rounded-pill px-3"><i class="fa-solid fa-trash"></i> Delete</a> --}}
+              <form action="/dashboard/beritas/{{$berita->slug}}" method="post" class="d-inline">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3" onclick="return confirm('Yakin Ingin menghapus berita ini?')"><i class="fa-solid fa-trash"></i> Delete</button>
+              </form>
+            
+            <div class="card text-bg-dark mt-3">
               <img src="https://source.unsplash.com/1199x299/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
             </div>
             <div class="article-konten mb-5 mt-3">

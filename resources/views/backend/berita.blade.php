@@ -38,7 +38,11 @@
             <td>
               <a href="/dashboard/beritas/{{ $berita->slug }}" class="btn btn-info btn-sm m-1"><i class="fa-regular fa-eye"></i></a>
               <a href="" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
-              <a href="" class="btn btn-danger btn-sm m-1"><i class="fa-solid fa-trash"></i></a>
+              <form action="/dashboard/beritas/{{$berita->slug}}" method="post" class="d-inline">
+                @method('delete')
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa-solid fa-trash"></i></button>
+              </form>
             </td>
           </tr>
         @endforeach
