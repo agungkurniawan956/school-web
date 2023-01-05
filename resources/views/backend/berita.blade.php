@@ -37,7 +37,7 @@
             <td>{{ $berita->created_at->diffForHumans()}}</td>
             <td>
               <a href="/dashboard/beritas/{{ $berita->slug }}" class="btn btn-info btn-sm m-1"><i class="fa-regular fa-eye"></i></a>
-              <a href="" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="/dashboard/beritas/{{ $berita->slug }}/edit" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
               <form action="/dashboard/beritas/{{$berita->slug}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf

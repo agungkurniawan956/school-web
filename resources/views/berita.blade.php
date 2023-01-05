@@ -45,12 +45,22 @@
           @if ($beritas->count())
             <div class="col-sm-12 col-md-6 col-lg-4">
               <div class="card h-100 shadow-md bg-light shadow-md">
-                <div class="card-berita-image card-img-top shadow-sm" style="background-image: url('https://source.unsplash.com/500x400?{{$beritas[0]->category->name}}');">
-                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                    New
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
-                </div>
+                @if ($beritas['0']->image)
+                  <div class="card-berita-image card-img-top shadow-sm" style="background-image: url('{{asset('storage/'. $beritas['0']->image)}}');">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                      New
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </div>
+                @else
+                  <div class="card-berita-image card-img-top shadow-sm" style="background-image: ">
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
+                      New
+                      <span class="visually-hidden">unread messages</span>
+                    </span>
+                  </div>
+                @endif
+                
                 <div class="card-body">
                   <h5 class="card-berita-title card-title">{{ $beritas['0']->title }}</h5>
                   <p class="card-berita-caption card-text">{{ $beritas['0']->excerpt }}</p>
@@ -65,7 +75,15 @@
             @foreach ($beritas->skip(1) as $berita)
               <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card h-100 shadow-md bg-light shadow-md">
-                  <div class="card-berita-image card-img-top shadow-sm" style="background-image: url('https://source.unsplash.com/500x400?{{$berita->category->name}}');"></div>
+                  @if ($berita->image)
+                    <div class="card-berita-image card-img-top shadow-sm" 
+                      style="background-image: url('{{asset('storage'. $berita->image)}}');">
+                    </div>
+                  @else
+                  <div class="card-berita-image card-img-top shadow-sm" 
+                    style="background-image: url('');">
+                  </div>
+                  @endif
                   <div class="card-body">
                     <h5 class="card-berita-title card-title">{{ $berita->title }}</h5>
                     <p class="card-berita-caption card-text">{{ $berita->excerpt }}</p>

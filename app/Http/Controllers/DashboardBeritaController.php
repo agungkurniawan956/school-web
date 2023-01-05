@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardBeritaController extends Controller
 {
@@ -42,12 +43,19 @@ class DashboardBeritaController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request->file('image')->store('berita-images');
+
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:beritas',
             'category_id' => 'required',
+            'image' => 'image|file|max:1024',
             'body' => 'required'
         ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('berita-image');
+        }
 
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
@@ -79,7 +87,12 @@ class DashboardBeritaController extends Controller
      */
     public function edit(Berita $berita)
     {
-        //
+        return view('backend.edit', [
+            'berita' => $berita,
+
+            'categories' => Category::all()
+
+        ]);
     }
 
     /**
@@ -91,7 +104,32 @@ class DashboardBeritaController extends Controller
      */
     public function update(Request $request, Berita $berita)
     {
-        //
+        $rules = ([
+            'title' => 'required|max:255',
+            'category_id' => 'required',
+            'image' => 'image|file|max:1024',
+            'body' => 'required'
+        ]);
+
+        if ($request->slug != $berita->slug) {
+            $rules['slug'] = 'required|unique:beritas';
+        }
+        $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($berita->image) {
+                Storage::delete($berita->image);
+            }
+            $validatedData['image'] = $request->file('image')->store('berita-image');
+        }
+
+        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+
+        Berita::where('id', $berita->id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/beritas')->with('success', 'Edit Berita Berhasil!!');
     }
 
     /**
@@ -102,6 +140,9 @@ class DashboardBeritaController extends Controller
      */
     public function destroy(Berita $berita)
     {
+        if ($berita->image) {
+            Storage::delete($berita->image);
+        }
         Berita::destroy($berita->id);
 
         return redirect('/dashboard/beritas')->with('success', 'Berita Berhasil dihapus!');

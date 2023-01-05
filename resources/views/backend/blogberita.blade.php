@@ -14,17 +14,22 @@
             </p>
             <p class="text-muted"><small>{{$berita->created_at->diffForHumans()}}</small></p>
             
-              <a href="" class="btn btn-warning btn-sm rounded-pill px-3"><i class="fa-solid fa-pen"></i> Edit</a>
+              <a href="/dashboard/beritas/{{$berita->slug}}/edit" class="btn btn-warning btn-sm rounded-pill px-3"><i class="fa-solid fa-pen"></i> Edit</a>
               {{-- <a href="" class="btn btn-danger btn-sm rounded-pill px-3"><i class="fa-solid fa-trash"></i> Delete</a> --}}
               <form action="/dashboard/beritas/{{$berita->slug}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm rounded-pill px-3" onclick="return confirm('Yakin Ingin menghapus berita ini?')"><i class="fa-solid fa-trash"></i> Delete</button>
               </form>
-            
-            <div class="card text-bg-dark mt-3">
-              <img src="https://source.unsplash.com/1199x299/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
-            </div>
+            @if ($berita->image)
+              <div class="card text-bg-dark mt-3" style="max-height: 399px; overflow:hidden">
+                <img src="{{ asset('storage/'. $berita->image )}}" class="card-img img-fluid" alt="{{$berita->title}}">
+              </div>
+            @else
+              <div class="card text-bg-dark mt-3">
+                <img src="https://source.unsplash.com/1199x399/{{$berita->category->name}}" class="card-img img-fluid" alt="{{$berita->title}}">
+              </div>
+            @endif
             <div class="article-konten mb-5 mt-3">
               {!! $berita->body !!}
             </div>

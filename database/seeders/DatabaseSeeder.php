@@ -46,7 +46,7 @@ class DatabaseSeeder extends Seeder
         //     'slug' => 'prestasi'
         // ]);
 
-        Berita::factory(2)->create();
+        Berita::factory(28)->create();
 
         // Berita::create([
         //     'title' => 'Wisuda Tp.2O21/2O22',
