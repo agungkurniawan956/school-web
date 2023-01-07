@@ -6,6 +6,7 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardBeritaController;
+use App\Http\Controllers\DashboardCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/beritas/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/beritas', DashboardBeritaController::class)->middleware('auth');
+
+Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('admin');
 
 
 
