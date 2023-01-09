@@ -15,4 +15,13 @@ class Category extends Model
     {
         return $this->hasMany(Berita::class);
     }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 }

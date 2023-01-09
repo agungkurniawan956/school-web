@@ -26,7 +26,7 @@ class DashboardCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.createcategory');
     }
 
     /**
@@ -37,7 +37,14 @@ class DashboardCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|unique:categories|max:25',
+            'slug' => 'required|unique:categories|max:255'
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect('/dashboard/categories')->with('success', 'Categoy baru berhasil di tambahkan!!');
     }
 
     /**

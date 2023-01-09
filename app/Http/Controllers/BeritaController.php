@@ -16,7 +16,7 @@ class BeritaController extends Controller
             $title = ' #' . $category->name;
         }
 
-        return view('berita', [
+        return view('berita.berita', [
             "title" => "Berita Pesantren" . $title,
             "active" => "Informasi",
             "beritas" => Berita::latest()->Filter(request(['search', 'category']))->paginate(6)->withQueryString()
@@ -25,7 +25,7 @@ class BeritaController extends Controller
 
     public function show(Berita $berita)
     {
-        return view('blogberita', [
+        return view('berita.blogberita', [
             "title" => "Berita",
             "active" => "Informasi",
             "berita" => $berita

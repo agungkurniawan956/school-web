@@ -77,12 +77,12 @@
                 <div class="card h-100 shadow-md bg-light shadow-md">
                   @if ($berita->image)
                     <div class="card-berita-image card-img-top shadow-sm" 
-                      style="background-image: url('{{asset('storage'. $berita->image)}}');">
+                      style="background-image: url('{{asset('storage/'. $berita->image)}}');">
                     </div>
                   @else
-                  <div class="card-berita-image card-img-top shadow-sm" 
-                    style="background-image: url('');">
-                  </div>
+                    <div class="card-berita-image card-img-top shadow-sm" 
+                      style="background-image: url('');">
+                    </div>
                   @endif
                   <div class="card-body">
                     <h5 class="card-berita-title card-title">{{ $berita->title }}</h5>

@@ -68,7 +68,7 @@
       <input id="body" type="hidden" name="body" value="{{ old('body', $berita->body)}}" required>
       <trix-editor input="body"></trix-editor>
     </div>
-    <button type="submit" class="btn btn-primary">Update Berita</i></button>
+    <button type="submit" class="btn btn-primary">Update</i></button>
   </form>
 </div>
 

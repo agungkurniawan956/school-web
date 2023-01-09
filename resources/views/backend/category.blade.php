@@ -3,15 +3,10 @@
 @section('content')
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Category</h1>
-    {{-- <div class="btn-toolbar mb-2 mb-md-0">
-      <div class="btn-group me-2">
-        <p class="fw-bold">Blog Berita</p>
-      </div>
-    </div> --}}
   </div>
 
   <div class="table-responsive col-lg-8">
-    <a href="/dashboard/category/create" class="btn btn-primary btn-smal px-3 mb-3"><i class="fa-solid fa-plus"></i> New</a>
+    <a href="/dashboard/categories/create" class="btn btn-primary btn-smal px-3 mb-3"><i class="fa-solid fa-plus"></i> New</a>
 
     @if (session()->has('success'))
       <div class="alert alert-success" role="alert">

@@ -42,9 +42,9 @@ Route::get('/contact', function () {
     ]);
 });
 
-//halaman all post
+//halaman all post frontend
 Route::get('/berita', [BeritaController::class, 'index']);
-// hlaman singel post
+// hlaman singel post frontend
 Route::get('/blogberita/{berita:slug}', [BeritaController::class, 'show']);
 
 Route::get('/dashboard', function () {
