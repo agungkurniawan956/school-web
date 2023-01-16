@@ -28,11 +28,11 @@
             <td>{{ $category->name }}</td>
             <td>
               <a href="/dashboard/categories/{{ $category->slug }}/edit" class="btn btn-warning btn-sm m-1"><i class="fa-solid fa-pen-to-square"></i></a>
-              <form action="/dashboard/categories/{{$category->slug}}" method="post" class="d-inline">
+              {{-- <form action="/dashboard/categories/{{$category->slug}}" method="post" class="d-inline">
                 @method('delete')
                 @csrf
                 <button type="submit" class="btn btn-danger btn-sm m-1" onclick="return confirm('Yakin ingin menghapus data ini?')"><i class="fa-solid fa-trash"></i></button>
-              </form>
+              </form> --}}
             </td>
           </tr>
         @endforeach

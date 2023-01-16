@@ -56,7 +56,8 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/beritas/checkSlug', [DashboardBeritaController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/beritas', DashboardBeritaController::class)->middleware('auth');
 
-Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show')->middleware('admin');
+Route::get('/dashboard/categories/checkSlug', [DashboardCategoryController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/categories', DashboardCategoryController::class)->except('show', 'destroy')->middleware('admin');
 
 
 

@@ -104,12 +104,12 @@ class DashboardBeritaController extends Controller
      */
     public function update(Request $request, Berita $berita)
     {
-        $rules = ([
+        $rules = [
             'title' => 'required|max:255',
             'category_id' => 'required',
             'image' => 'image|file|max:1024',
             'body' => 'required'
-        ]);
+        ];
 
         if ($request->slug != $berita->slug) {
             $rules['slug'] = 'required|unique:beritas';
