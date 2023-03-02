@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link {{Request::is('dashboard/agenda*') ? 'active' : ''}} " href="/dashboard/agenda">
           <i class="fa-solid fa-calendar-days"></i>
           Agenda
         </a>
@@ -32,26 +32,25 @@
       <li class="nav-item">
         <a class="nav-link {{ Request::is('dashboard/categories*') ? 'active' : ''}}" href="/dashboard/categories">
           <i class="fa-solid fa-puzzle-piece"></i>
-          {{-- <span data-feather="file-text" class="align-text-bottom"></span> --}}
           Category
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Last quarter
+        <a class="nav-link {{ Request::is('dashboard/contact*') ? 'active' : ''}}" href="/dashboard/contact">
+          <i class="fa-solid fa-message"></i>
+          Message
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Social engagement
+        <a class="nav-link {{ Request::is('dashboard/gallery*') ? 'active' : ''}}" href="/dashboard/gallery">
+          <i class="fa-solid fa-image"></i>
+          Gallery
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span data-feather="file-text" class="align-text-bottom"></span>
-          Year-end sale
+        <a class="nav-link{{ Request::is('/dashboard/user*') ? 'active':''}}" href="/dashboard/user">
+          <i class="fa-solid fa-users"></i>
+          User
         </a>
       </li>
     </ul>

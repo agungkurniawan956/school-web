@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Buat Berita</h1>
+  <h1 class="h2">Buat Agenda</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <p class="fw-bold">Blog Berita</p>
@@ -11,15 +11,15 @@
 </div>
 
 <div class="col-lg-8">  
-  <form method="post" action="/dashboard/beritas" enctype="multipart/form-data">
+  <form method="post" action="/dashboard/agenda" enctype="multipart/form-data" >
     @csrf
     <div class="mb-3">
       <label for="title" class="form-label">Title</label>
       <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title')}}" placeholder="Input title" required>
       @error('title')
-        <div class="invalid-feedback">
-          {{$message}}
-        </div>
+      <div class="invalid-feedback">
+        {{$message}}
+      </div>
       @enderror
     </div>
     <div class="mb-3">
@@ -32,16 +32,22 @@
       @enderror
     </div>
     <div class="mb-3">
-      <label for="category" class="form-label">Category</label>
-      <select class="form-select" name="category_id">
-        @foreach ($categories as $category)
-          @if (old('category_id') == $category->id)
-            <option value="{{ $category->id}}" selected>{{$category->name}}</option>
-          @else
-            <option value="{{ $category->id}}">{{$category->name}}</option>
-          @endif
-        @endforeach
-      </select>
+      <label for="tempat" class="form-label">Tempat</label>
+      <input type="text" class="form-control @error('tempat') is-invalid @enderror" id="tempat" name="tempat" value="{{ old('tempat')}}" placeholder="Input tempat" required>
+      @error('tempat')
+      <div class="invalid-feedback">
+        {{$message}}
+      </div>
+      @enderror
+    </div>
+    <div class="mb-3">
+      <label for="time" class="form-label">Waktu</label>
+      <input type="date" class="form-control @error('time') is-invalid @enderror" id="time" name="time" value="{{ old('time')}}" required>
+      @error('time')
+      <div class="invalid-feedback">
+        {{$message}}
+      </div>
+      @enderror
     </div>
     <div class="mb-3">
       <label for="image" class="form-label">Image</label>
@@ -70,7 +76,7 @@
   const slug = document.querySelector('#slug');
 
   title.addEventListener('change', function(){
-    fetch('/dashboard/beritas/checkSlug?title=' + title.value)
+    fetch('/dashboard/agenda/checkSlug?title=' + title.value)
     .then(response => response.json())
     .then(data => slug.value = data.slug)
   });

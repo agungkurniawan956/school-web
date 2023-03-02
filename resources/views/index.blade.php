@@ -72,7 +72,7 @@
           <h1>Berita Pesantren</h1>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center g-4 pb-3">
-          <div class="col">
+          {{-- <div class="col">
             <div class="card h-100 shadow-md bg-light shadow">
               <div class="card-berita-image card-img-top" style="background-image: url('/frontend/images/osis.jpg');"></div>
               <div class="card-body">
@@ -90,16 +90,31 @@
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, suscipit in.</p>
               </div>
             </div>
-          </div>
+          </div> --}}
+          @foreach ($beritas as $berita)    
           <div class="col">
             <div class="card h-100 bg-light shadow">
-              <div class="card-berita-image card-img-top" style="background-image: url('/frontend/images/tapaksuci.jpg');"></div>
+              @if ($berita->image)
+                  <div class="card-berita-image card-img-top shadow-sm"
+                    style="background-image: url('{{asset('storage/'. $berita->image)}}');">
+                  </div>
+              @else
+                <div class="card-berita-image card-img-top shadow-sm"
+                  style="background-image: url('https://via.placeholder.com/728x300.png?text=No+Picture+For+This+Page');">
+                </div>
+              @endif
+              {{-- <div class="card-berita-image card-img-top" style="background-image: url('/frontend/images/tapaksuci.jpg');"></div> --}}
               <div class="card-body">
-                <h5 class="card-title">Title</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus, suscipit in.</p>
+                <h5 class="card-title">{{$berita->title}}</h5>
+                <p class="card-text">{{$berita->excerpt}}</p>
+                <p class="card-text text-muted"><small>{{$berita->created_at->diffForHumans()}}</small></p>
+              </div>
+              <div class="card-footer">
+                <a href="/blogberita/{{ $berita->slug }}" class="btn btn-primary btn-sm">Detail..</a>
               </div>
             </div>
           </div>
+          @endforeach
         </div>
       </div>
     </section>
@@ -154,59 +169,24 @@
           <h1 class="text-center">Agenda Pesantren</h1>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          @foreach ($agendas as $agenda)
           <div class="col">
             <div class="card h-100 shadow-sm bg-light">
-              <div class="card-img-agenda card-img-top" style="background-image: url('/frontend/images/tapaksuci.jpg');">
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
-                  New
-                  <span class="visually-hidden">unread messages</span>
-                </span>
-              </div>
+              <div class="card-img-agenda card-img-top" style="background-image: url('{{asset('storage/'.$agenda->image)}}');"></div>
               <div class="card-body">
-                <h5 class="card-title">Title </h5>
+                <h5 class="card-title">{{$agenda->title}}</h5>
                 <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, nobis odio!</p>
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">Mushola Asrama Putra</li>
-                <li class="list-group-item">28 September 2022</li>
+                <li class="list-group-item"><i class="fa-solid fa-location-dot"></i> {{$agenda->tempat}}</li>
+                <li class="list-group-item">{{$agenda->time}}</li>
               </ul>
               <div class="card-body">
-                <a href="#" class="btn btn-sm btn-primary">Details..</a>
+                <a href="/informasi/agenda/{{$agenda->slug}}" class="btn btn-sm btn-primary">Details..</a>
               </div>
             </div>
           </div>
-          <div class="col">
-            <div class="card h-100 shadow-sm bg-light">
-              <div class="card-img-agenda card-img-top" style="background-image: url('/frontend/images/osis.jpg');"></div>
-              <div class="card-body">
-                <h5 class="card-title">Title hear</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, nobis odio!</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Mushola Asrama Putra</li>
-                <li class="list-group-item">28 September 2022</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="btn btn-sm btn-primary">Details..</a>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card h-100 shadow-sm bg-light">
-              <div class="card-img-agenda card-img-top" style="background-image: url('');"></div>
-              <div class="card-body">
-                <h5 class="card-title">Title hear</h5>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, nobis odio!</p>
-              </div>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">Mushola Asrama Putra</li>
-                <li class="list-group-item">28 September 2022</li>
-              </ul>
-              <div class="card-body">
-                <a href="#" class="btn btn-sm btn-primary">Details..</a>
-              </div>
-            </div>
-          </div>
+        @endforeach
         </div>
       </div>
     </section>
@@ -219,30 +199,12 @@
       </div>
       <div class="container">
         <div class="section-galeri-content row justify-content-center">
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri rounded" style="background-image: url('/frontend/images/pramuka.jpg') ;">
+          @foreach ($galleries as $gallery)
+            <div class="col-sm-12 col-md-6 col-lg-4">
+              <div class="card-galeri rounded" style="background-image: url('{{ asset('storage/'. $gallery->image)}}') ;">
+              </div>
             </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri" style="background-image: url('/frontend/images/tapaksuci.jpg') ;">
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri" style="background-image: url('/frontend/images/futsal\ \(1\).jpg') ;">
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri" style="background-image: url('/frontend/images/pramuka.jpg') ;">
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri" style="background-image: url('/frontend/images/tapaksuci.jpg') ;">
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card-galeri" style="background-image: url('/frontend/images/futsal\ \(1\).jpg') ;">
-            </div>
-          </div>
+          @endforeach
         </div>
       </div>
     </section>

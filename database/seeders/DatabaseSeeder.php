@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Category;
 use App\Models\User;
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
         // User::create([
         //     'name' => 'Sarwan Haiban',
         //     'email' => 'sarwan@gmail.com',
+        //     'level' => 'admin',
         //     'password' => bcrypt('54321')
         // ]);
 
@@ -36,17 +38,18 @@ class DatabaseSeeder extends Seeder
         //     'password' => bcrypt('54321')
         // ]);
 
-        // Category::create([
-        //     'name' => 'Akademik',
-        //     'slug' => 'akademik'
-        // ]);
+        Category::create([
+            'name' => 'Akademik',
+            'slug' => 'akademik'
+        ]);
 
-        // Category::create([
-        //     'name' => 'Prestasi',
-        //     'slug' => 'prestasi'
-        // ]);
+        Category::create([
+            'name' => 'Prestasi',
+            'slug' => 'prestasi'
+        ]);
 
-        Berita::factory(28)->create();
+        // Berita::factory(28)->create();
+        // Agenda::factory(28)->create();
 
         // Berita::create([
         //     'title' => 'Wisuda Tp.2O21/2O22',

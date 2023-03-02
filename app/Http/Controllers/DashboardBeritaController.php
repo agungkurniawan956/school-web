@@ -60,6 +60,7 @@ class DashboardBeritaController extends Controller
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
 
+
         Berita::create($validatedData);
 
         return redirect('/dashboard/beritas')->with('success', 'Posting Berita Berhasil!!');

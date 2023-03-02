@@ -53,7 +53,7 @@
                     </span>
                   </div>
                 @else
-                  <div class="card-berita-image card-img-top shadow-sm" style="background-image: ">
+                  <div class="card-berita-image card-img-top shadow-sm" style="background-image:url('https://via.placeholder.com/728x300.png?text=No+Picture+For+This+Page') ">
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-primary">
                       New
                       <span class="visually-hidden">unread messages</span>
@@ -81,7 +81,7 @@
                     </div>
                   @else
                     <div class="card-berita-image card-img-top shadow-sm" 
-                      style="background-image: url('');">
+                      style="background-image: url('https://via.placeholder.com/728x300.png?text=No+Picture+For+This+Page');">
                     </div>
                   @endif
                   <div class="card-body">

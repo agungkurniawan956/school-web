@@ -28,11 +28,11 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/berita">Berita Pesantren</a></li>
-            <li><a class="dropdown-item" href="#">Agenda Pesantren</a></li>
+            <li><a class="dropdown-item" href="/informasi/agenda">Agenda Pesantren</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Kontak</a>
+          <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact/create">Kontak</a>
         </li>
       </ul>
       <ul class="navbar-nav">
