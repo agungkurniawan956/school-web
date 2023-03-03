@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.user.create');
     }
 
     /**
@@ -37,7 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|unique:users|email:dns',
+            'level' => 'required|max:25',
+            'password' => 'required|min:5|max:255'
+        ]);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        User::create($validatedData);
+        return redirect('/dashboard/user')->with('success', 'Berhasil Menambahkan User!!');
     }
 
     /**
@@ -75,7 +86,7 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required|max:255',
-            'level' => 'required|max:9'
+            'level' => 'required|max:25'
         ];
         if ($request->email != $user->email) {
             $rules['email'] = 'required|unique:users|email:dns';
@@ -95,8 +106,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        User::destroy($user->id);
+        return redirect('/dashboard/user')->with('success', 'User berhasil dihapus!!');
     }
 }
